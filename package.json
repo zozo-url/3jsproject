@@ -1,0 +1,24 @@
+{
+  "name": "3jsproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "three": "^0.109.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zozo-url/3jsproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zozo-url/3jsproject/issues"
+  },
+  "homepage": "https://github.com/zozo-url/3jsproject#readme"
+}
