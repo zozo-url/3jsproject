@@ -1,16 +1,15 @@
 let container;
 let camera;
 let renderer;
+let geometry;
 let scene;
 let mesh;
-
 function init(){
-    console.log('hey')
     //set up
     container = document.querySelector( '#scene-container')
     //scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x8FBCD4)
+    scene.background = new THREE.Color(0xFFFFFF)
     //camera
     const fov = 35; // field of view
     const aspect = container.clientWidth / container.clientHeight
@@ -20,14 +19,14 @@ function init(){
     //x,y,z positions
     camera.position.set( 0, 0, 10 );
     //make geometry
-    const geometry = new THREE.BoxBufferGeometry(2,2,2);
+    geometry = new THREE.BoxBufferGeometry(var1,var2,var3);
     //make material
     const material = new THREE.MeshStandardMaterial({color: 0x8000080});
     //combine 4 mesh
     mesh = new THREE.Mesh (geometry, material);
     //add to scene
     scene.add(mesh);
-
+console.log(mesh)
     //create a directional light
     const light = new THREE.DirectionalLight(0xffffff, 5.0)
     //move light back and up a bit
@@ -45,12 +44,14 @@ function init(){
 function animate() {
     //call animate recursively 
     requestAnimationFrame( animate );
-
       // increase the mesh's rotation each frame
     mesh.rotation.z += 0.01;
     mesh.rotation.x += 0.01;
     mesh.rotation.y += 0.01;
-
+    mesh.scale.x = var1;
+    mesh.scale.y = var2;
+    mesh.scale.z = var3;
+    // mesh.position.z-=0.01;
     // render, or 'create a still image', of the scene
     renderer.render( scene, camera );
 }
