@@ -4,55 +4,45 @@ let renderer;
 let geometry;
 let scene;
 let mesh;
+// color: 0x8000080
 function init(){
-    //set up
     container = document.querySelector( '#scene-container')
-    //scene
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xFFFFFF)
-    //camera
-    const fov = 35; // field of view
+    const fov = 35; 
     const aspect = container.clientWidth / container.clientHeight
-    const near = 0.1; // the near clipping plane
-    const far = 100; // the far clipping plane
+    const near = 0.1; 
+    const far = 100; 
     camera = new THREE.PerspectiveCamera( fov, aspect, near, far)
-    //x,y,z positions
     camera.position.set( 0, 0, 10 );
-    //make geometry
-    geometry = new THREE.BoxBufferGeometry(var1,var2,var3);
-    //make material
-    const material = new THREE.MeshStandardMaterial({color: 0x8000080});
-    //combine 4 mesh
+    geometry = new THREE.IcosahedronBufferGeometry();
+    var texture = new THREE.TextureLoader().load( "rainbw.jpg" );
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set( 6, 6 );
+    const material = new THREE.MeshStandardMaterial({map: texture, color: 0xFFFFFF});
     mesh = new THREE.Mesh (geometry, material);
-    //add to scene
     scene.add(mesh);
-console.log(mesh)
-    //create a directional light
-    const light = new THREE.DirectionalLight(0xffffff, 5.0)
-    //move light back and up a bit
+    const light = new THREE.DirectionalLight(0xFFFFFF, 3)
     light.position.set(10,10,10);
-    //add light to scene
     scene.add(light);
-    //set up renderer
     renderer = new THREE.WebGLRenderer({antialias: true})
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio)
-    //add rendered <canvas> element to page
     container.appendChild(renderer.domElement)
 }
 
 function animate() {
-    //call animate recursively 
     requestAnimationFrame( animate );
-      // increase the mesh's rotation each frame
-    mesh.rotation.z += 0.01;
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.01;
+    mesh.rotation.z += rotZ;
+    mesh.rotation.x += rotX;
+    mesh.rotation.y += rotY;
     mesh.scale.x = var1;
     mesh.scale.y = var2;
     mesh.scale.z = var3;
-    // mesh.position.z-=0.01;
-    // render, or 'create a still image', of the scene
+    mesh.position.x = posX;
+    mesh.position.y = posY;
+    mesh.position.z = posZ;
     renderer.render( scene, camera );
 }
 

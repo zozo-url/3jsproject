@@ -2,6 +2,8 @@ body {
     margin: 0;
     overflow: hidden;
     text-align: center;
+    font-family: helvetica;
+    font-weight: lighter;
 }
 
 #scene-container {
@@ -13,15 +15,24 @@ body {
     position: absolute;
     display:block;
     margin: auto;
-    top: 25em;
-    left: 10em;
+    top: 6em;
+    left: 12.5em;
     text-align: center;
-    border: 2px solid grey;
-    padding: 1em 0.5em;
+    border: 1px solid grey;
+    border-radius:2em;
+    padding: 1em 2em;
+    background-color:rgb(255, 255, 255, 0.75);
 }
 .slider {
-    display:block;
-    width: 70%;
+    display:inline-block;
     margin:auto;
-    padding: 1em;
+    padding: 0em 0.5em;
+    vertical-align: top;
+}
+.slider:last-of-type{
+    margin-bottom:1.5em;
+}
+p {
+    padding: 0em;
+    margin: 1em 1.5em 0em 0.5em;
 }
